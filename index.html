@@ -1,86 +1,108 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Test Submission Portal</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
+  <head>
+    <title>Test Submission Portal</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+     
+      <!-- Main -->
+      <div id="main" style="display: flex; justify-content: center;">
+        <div class="inner" style="text-align: center;">
+          <header>
+            <h1>Test Upload Portal<br /></h1>
+            <p>
+              Please attach only a single PDF file here. To create a pdf,
+              install Adobe Scan app from app store.
+              <strong>Please rename the file with your full name.</strong>
+            </p>
+          </header>
+          <section class="tiles">
+            <form
+              action="https://script.google.com/macros/s/AKfycbz4Y3ajZKVO0g93qHoP_mp6Jft6tL4YVf4ovkpRxF8QrEaubHo/exec"
+              id="form"
+              class="main-form"
+              method="post"
+            >
+              <div id="data"></div>
+              <br />
+              <div>
+                <input name="file" id="uploadfile" type="file" />
+              </div>
+              <div
+                class="input-group"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  margin-top: 1rem;
+                  width: auto;
+                  float: left;
+                "
+              >
+                <input id="submit" type="submit" />
+              </div>
+            </form>
+					</section>
+					<div style="display: flex; justify-content: center;">
+						<img src="images/logo1.gif" id="img" style="display:none"/ >
+					</div>	
+        </div>
+      </div>
+    </div>
 
-			
-				<!-- Main -->
-					<div id="main" style="display:flex;justify-content: center;">
-						<div class="inner" style="text-align: center;">
-							<header>
-								<h1>Test Upload Portal<br /></h1>
-								<p>Please attach only a single PDF file here. To create a pdf, install Adobe Scan app from app store. <strong>Please rename the file with your full name.</strong></p>
-							</header>
-							<section class="tiles">
-							
-								<form
-          action="https://script.google.com/macros/s/AKfycbz4Y3ajZKVO0g93qHoP_mp6Jft6tL4YVf4ovkpRxF8QrEaubHo/exec"
-          id="form"
-          class="main-form"
-          method="post"
-        >
-        
-          <div id="data"></div>
-          <br>
-          <div>
-            
-            <input name="file" id="uploadfile" type="file" />
-          </div>
-          <div class="input-group" style="display:flex; justify-content: center; margin-top: 1rem; width: auto;float: left;">
-            <input id="submit" type="submit" />
-          </div>
-        </form>
-							</section>
-						</div>
-					</div>
+    <!-- Scripts -->
+    <script>
+         $("#uploadfile").on("change", function () {
+           var file = this.files[0];
+           var fr = new FileReader();
+           fr.fileName = file.name;
 
-				
-			</div>
+           fr.onload = function (e) {
 
-		<!-- Scripts -->
+             e.target.result;
+             html =
+               '<input type="hidden" name="data" value="' +
+               e.target.result.replace(/^.*,/, "") +
+               '" >';
+             html +=
+               '<input type="hidden" name="mimetype" value="' +
+               e.target.result.match(/^.*(?=;)/)[0] +
+               '" >';
+             html +=
+               '<input type="hidden" name="filename" value="' +
+               e.target.fileName +
+               '" >';
+             $("#data").empty().append(html);
+           };
+           fr.readAsDataURL(file);
+         });
+     
+		</script>
 		<script>
-      $("#uploadfile").on("change", function () {
-        var file = this.files[0];
-        var fr = new FileReader();
-        fr.fileName = file.name;
-        fr.onload = function (e) {
-          e.target.result;
-          html =
-            '<input type="hidden" name="data" value="' +
-            e.target.result.replace(/^.*,/, "") +
-            '" >';
-          html +=
-            '<input type="hidden" name="mimetype" value="' +
-            e.target.result.match(/^.*(?=;)/)[0] +
-            '" >';
-          html +=
-            '<input type="hidden" name="filename" value="' +
-            e.target.fileName +
-            '" >';
-          $("#data").empty().append(html);
-        };
-        fr.readAsDataURL(file);
+			 $('#submit').click(function(){
+      		$('#img').show(); //<----here
       });
-    </script>
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+		</script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
