@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+    <link href="styles.css" rel="stylesheet" />
+    <title>Test Submission</title>
+  </head>
+  <body class="full-height-grow">
+    <div class="container full-height-grow">
+      <section class="main-section">
+        <form action="https://script.google.com/macros/s/AKfycbxhV1qklfy94Xi7Jz1hG2P463JCHhJb59uWo8_NtscNrs2tYjI/execs" class="main-form" id="form" method="post">
+          <div id="data"></div>
+          <div class="input-group">
+            <label>Exam Code:</label>
+            <input type="text"/>
+          </div>
+          <div class="input-group">
+            <label>Name:</label>
+            <input type="text" />
+          </div>
+          <div class="input-group">
+            <label>Email:</label>
+            <input type="email" />
+          </div>
+          <div class="input-group">
+            <input style="background:none; border:none" class="btn" name="file" id="uploadfile" type="file"></input>
+          </div>
+          <div class="input-group">
+            <button type="submit" class="btn" id="submit">Send Now!</button>
+          </div>
+        </form>
+        <script>
+          $('#uploadfile').on("change", function() {
+        var file = this.files[0];
+        var fr = new FileReader();
+        fr.fileName = file.name;
+        fr.onload = function(e) {
+            e.target.result
+            html = '<input type="hidden" name="data" value="' + e.target.result.replace(/^.*,/, '') + '" >';
+            html += '<input type="hidden" name="mimetype" value="' + e.target.result.match(/^.*(?=;)/)[0] + '" >';
+            html += '<input type="hidden" name="filename" value="' + e.target.fileName + '" >';
+            $("#data").empty().append(html);
+        }
+        fr.readAsDataURL(file);
+    });
+        </script>
+      </section>
+    </div>
+    <div class="join-page-circle-1"></div>
+    <div class="join-page-circle-2"></div>
+  </body>
+</html>

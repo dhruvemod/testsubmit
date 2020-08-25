@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      updateList = function () {
+        var input = document.getElementById("file");
+        var output = document.getElementById("fileList");
+        var children = "";
+        for (var i = 0; i < input.files.length; ++i) {
+          children += "<li>" + input.files.item(i).name + "</li>";
+        }
+        output.innerHTML = "<ul>" + children + "</ul>";
+      };
+    </script>
+  </head>
+  <body>
+    <div class="main-section">
+      <form>
+        <div class="select-multiple">
+          <input
+            type="file"
+            multiple
+            name="file"
+            id="file"
+            onchange="javascript:updateList()"
+          />
+
+          <p>Selected files:</p>
+
+          <div id="fileList"></div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
